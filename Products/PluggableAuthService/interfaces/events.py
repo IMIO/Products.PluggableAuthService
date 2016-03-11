@@ -42,8 +42,12 @@ class IPropertiesUpdatedEvent(IPASEvent):
     properties = Attribute('List of modified property ids')
 
 
-class IGroupDeletedEvent(IPASEvent):
+class IGroupDeletedEvent(IPrincipalDeletedEvent):
     """A group has been removed.
     """
 
+
+class IUserDeletedEvent(IPrincipalDeletedEvent):
+    """A user has been removed.
+    """
 

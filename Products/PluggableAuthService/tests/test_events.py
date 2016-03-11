@@ -168,3 +168,31 @@ class GroupDeletedTests(unittest.TestCase, ConformsToIPASEvent):
 class DummyGroup(object):
     pass
 
+
+class UserDeletedTests(unittest.TestCase, ConformsToIPASEvent):
+
+    def _getTargetClass(self):
+        from Products.PluggableAuthService.events import UserDeleted
+        return UserDeleted
+
+    def _makeOne(self, User=None):
+        if User is None:
+            User = DummyUser()
+        return self._getTargetClass()(User)
+
+    def test_class_conforms_to_IUserDeletedEvent(self):
+        from zope.interface.verify import verifyClass
+        from Products.PluggableAuthService.interfaces.events \
+            import IUserDeletedEvent
+        verifyClass(IUserDeletedEvent, self._getTargetClass())
+
+    def test_instance_conforms_to_IUserDeletedEvent(self):
+        from zope.interface.verify import verifyObject
+        from Products.PluggableAuthService.interfaces.events \
+            import IUserDeletedEvent
+        verifyObject(IUserDeletedEvent, self._makeOne())
+
+
+class DummyUser(object):
+    pass
+

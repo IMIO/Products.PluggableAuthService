@@ -4,6 +4,9 @@ Change Log
 1.10.1 (unreleased)
 -------------------
 
+- Add new event to be able to notify user deletion specifically instead
+  of principal deletion. 
+
 - Add new event to be able to notify group deletion.
 
 - Fix usage of os.path.split(). Could result in Errors during import
